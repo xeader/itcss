@@ -1,0 +1,37 @@
+/*!
+ * Xeader Studios
+ *
+ * NOTICE OF LICENCE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt
+ * It is also available through th world-wide-web at this URL:
+ * https://xeader.com/LICENCE-CE.txt
+ *
+ * @category bluelabs.cbm
+ * @package bluelabs.cbm
+ *
+ * @author Antonio Gatta <a.gatta@xeader.com>
+ * @url http://xeader.com
+ * @copyright Copyright (c) 2019 Xeader Studios
+ * @license All right reserved
+ */
+@import "../tools/tools.functions";
+
+$global-width: rem-calc(1200) !default;
+$max-full-width: rem-calc(1440) !default;
+
+/// The maximum width of a row.
+/// @type Number
+$grid-row-width: $global-width !default;
+
+/// The default column count of a grid. Changing this value affects the logic of the grid mixins, and the number of CSS classes output.
+/// @type Number
+$grid-column-count: 12 !default;
+
+/// The amount of space between columns at different screen sizes. To use just one size, set the variable to a number instead of a map.
+/// @type Map | Length
+$grid-column-gutter: (
+  small: rem-calc(20),
+  medium: rem-calc(30),
+) !default;

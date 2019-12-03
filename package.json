@@ -1,0 +1,32 @@
+{
+  "name": "@xeader/itcss",
+  "version": "1.0.0",
+  "description": "Xeader ITCSS SCSS scaffolding and utilities",
+  "homepage": "https://github.com/xeader/itcss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xeader/itcss.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "keywords": [
+    "itcss",
+    "scss",
+    "css",
+    "normalize",
+    "reset"
+  ],
+  "author": {
+    "name": "Antonio Gatta",
+    "email": "a.gatta@xeader.com",
+    "url": "https://www.xeader.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "normalize-scss": "JohnAlbin/normalize-scss"
+  }
+}

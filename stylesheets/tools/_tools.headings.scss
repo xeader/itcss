@@ -1,0 +1,42 @@
+/*!
+ * Xeader Studios
+ *
+ * NOTICE OF LICENCE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt
+ * It is also available through th world-wide-web at this URL:
+ * https://xeader.com/LICENCE-CE.txt
+ *
+ * @category bluelabs.cbm
+ * @package bluelabs.cbm
+ *
+ * @author Antonio Gatta <a.gatta@xeader.com>
+ * @url http://xeader.com
+ * @copyright Copyright (c) 2019 Xeader Studios
+ * @license All right reserved
+ */
+
+@mixin heading-font-family {
+  font-family: $heading-font-family;
+  font-weight: normal;
+}
+
+@mixin subheading-font-family {
+  font-family: $subheading-font-family;
+}
+
+@mixin heading-font-size($hx: null) {
+  $hx-font-size: map_get($heading-font-sizes, $hx);
+  @include normalize-font-size($hx-font-size);
+  @include normalize-line-height($hx-font-size);
+  @include normalize-rhythm(margin-bottom, $hx-font-size);
+}
+
+@mixin heading($hx: null) {
+  @include heading-font-family;
+  color: $heading-font-color;
+  @if ($hx != null) {
+    @include heading-font-size($hx);
+  }
+}

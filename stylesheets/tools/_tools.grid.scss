@@ -1,0 +1,41 @@
+/*!
+ * Xeader Studios
+ *
+ * NOTICE OF LICENCE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt
+ * It is also available through th world-wide-web at this URL:
+ * https://xeader.com/LICENCE-CE.txt
+ *
+ * @category bluelabs.cbm
+ * @package bluelabs.cbm
+ *
+ * @author Antonio Gatta <a.gatta@xeader.com>
+ * @url http://xeader.com
+ * @copyright Copyright (c) 2019 Xeader Studios
+ * @license All right reserved
+ */
+
+@mixin grid-container {
+  @include full-width-max;
+  width: 100%;
+}
+
+@mixin grid() {
+  @include grid-container;
+  display: grid;
+  flex: 0 1 auto;
+  grid-template-columns: repeat($grid-column-count, minmax(0, 1fr));
+
+  // gutter
+  @each $size, $gutter in $grid-column-gutter {
+    @include breakpoint($size up) {
+      grid-gap: $gutter;
+    }
+  }
+}
+
+@mixin grid-column($span: $grid-column-count) {
+  grid-column-end: span $span;
+}

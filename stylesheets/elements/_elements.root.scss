@@ -1,0 +1,35 @@
+/*!
+ * Xeader Studios
+ *
+ * NOTICE OF LICENCE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt
+ * It is also available through th world-wide-web at this URL:
+ * https://xeader.com/LICENCE-CE.txt
+ *
+ * @category bluelabs.cbm
+ * @package bluelabs.cbm
+ *
+ * @author Antonio Gatta <a.gatta@xeader.com>
+ * @url http://xeader.com
+ * @copyright Copyright (c) 2019 Xeader Studios
+ * @license All right reserved
+ */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: normal;
+  font-family: $base-font-family;
+  @include normalize-font-size($base-font-size);
+  @include normalize-line-height($base-font-size);
+}

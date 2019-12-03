@@ -1,0 +1,27 @@
+// Named colors
+$black-color: #000 !default;
+$white-color: #fff !default;
+$blue-color: #00529c !default;
+$cyan-color: #4bb8ff !default;
+$green-color: #3adb76 !default;
+$yellow-color: #ffae00 !default;
+$trinidad-color: #cc4b37 !default;
+$fucsia-color: #d21c87 !default;
+$violet-color: #5d1cd2 !default;
+
+// Accent Colors
+$primary-color: $blue-color !default;
+$secondary-color: $fucsia-color !default;
+
+// Alert colors
+$success-color: #3adb76 !default;
+$warning-color: #ffae00 !default;
+$danger-color: #cc4b37 !default;
+
+// Context colors
+$body-background: $white-color !default;
+
+// Typography colors
+$text-color: #2f3033 !default;
+$body-font-color: $text-color !default;
+$heading-font-color: $text-color !default;

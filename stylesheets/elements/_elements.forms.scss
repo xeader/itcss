@@ -1,0 +1,59 @@
+/*!
+ Xeader Studios
+
+ NOTICE OF LICENCE
+
+ This source file is subject to the EULA
+ that is bundled with this package in the file LICENSE.txt
+ It is also available through th world-wide-web at this URL:
+ https://xeader.com/LICENCE-CE.txt
+
+ @category xeader.itcss
+ @package xeader.itcss
+
+ @author Antonio Gatta <a.gatta@xeader.com>
+ @url https://xeader.com
+ @copyright Copyright (c) 2019 Xeader Studios
+ @license All right reserved
+ */
+
+// Preconfigure these settings before the @import of this file.
+$form-font-family: $base-font-family !default;
+
+$legend-font-size: 1rem !default;
+$fieldset-color-border: #005639 !default;
+$fieldset-padding: 1.5rem !default;
+
+$legend-color: #fff !default;
+$legend-color-bg: #005639 !default;
+$legend-padding: 0.25rem 1rem !default;
+$form-font-family: $base-font-family !default;
+
+$label-padding: 0.25rem 0 !default;
+$label-color: #002317 !default;
+
+form {
+  font-family: $form-font-family;
+}
+
+fieldset {
+  font-size: $legend-font-size;
+  border: 2px solid $fieldset-color-border;
+  padding: $fieldset-padding;
+  border-radius: 0.5em;
+}
+
+legend {
+  color: $legend-color;
+  background: $legend-color-bg;
+  padding: $legend-padding;
+  border-radius: 1rem;
+}
+
+label {
+  font-weight: bold;
+  font-size: 0.75rem;
+  padding: $label-padding;
+  color: $label-color;
+  cursor: pointer;
+}

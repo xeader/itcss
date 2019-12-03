@@ -1,0 +1,53 @@
+/*!
+ * Xeader Studios
+ *
+ * NOTICE OF LICENCE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt
+ * It is also available through th world-wide-web at this URL:
+ * https://xeader.com/LICENCE-CE.txt
+ *
+ * @category bluelabs.cbm
+ * @package bluelabs.cbm
+ *
+ * @author Antonio Gatta <a.gatta@xeader.com>
+ * @url http://xeader.com
+ * @copyright Copyright (c) 2019 Xeader Studios
+ * @license All right reserved
+ */
+
+///* ========================================================================
+//   #CLEARFIX
+//   ======================================================================== */
+
+// Mixin to drop micro clearfix into a selector. Further reading:
+// http://www.cssmojo.com/the-very-latest-clearfix-reloaded/
+//
+// .usage {
+//   @include inuit-clearfix();
+// }
+
+// Mixin to drop micro clearfix into a selector.
+//
+// .simple-usage {
+//   @include clearfix();
+// }
+//
+// .detailed-usage {
+//   @include clearfix(important);
+// }
+
+@mixin clearfix($important: false) {
+  @if ($important == "important") {
+    $important: unquote("!important");
+  } @else {
+    $important: null;
+  }
+
+  &:after {
+    content: "" $important;
+    display: table $important;
+    clear: both $important;
+  }
+}
