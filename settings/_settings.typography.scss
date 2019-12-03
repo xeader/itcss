@@ -21,6 +21,7 @@ $serif-font-family: Georgia, serif !default;
 $monospace-font-family: Consolas, "Liberation Mono", Courier, monospace !default;
 $heading-font-family: $serif-font-family;
 $subheading-font-family: $heading-font-family;
+$heading-font-weight: bold;
 
 // The font sizes for h1-h6.
 $h1-font-size: 2 * $base-font-size !default;

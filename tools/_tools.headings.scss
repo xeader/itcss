@@ -25,6 +25,9 @@
 @mixin subheading-font-family {
   font-family: $subheading-font-family;
 }
+@mixin subheading-font-family {
+  font-weight: $subheading-font-weight;
+}
 
 @mixin heading-font-size($hx: null) {
   $hx-font-size: map_get($heading-font-sizes, $hx);
@@ -35,6 +38,7 @@
 
 @mixin heading($hx: null) {
   @include heading-font-family;
+  @include heading-font-weight;
   color: $heading-font-color;
   @if ($hx != null) {
     @include heading-font-size($hx);
