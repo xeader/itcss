@@ -1,3 +1,7 @@
+@function contains($list, $var) {
+  @return (null != index($list, $var));
+}
+
 // Foundation for Sites by ZURB
 // foundation.zurb.com
 // Licensed under MIT Open Source
@@ -34,12 +38,12 @@ $global-font-size: 100% !default;
 
   // If the base font size is a %, then multiply it by 16px
   // This is because 100% font size = 16px in most all browsers
-  @if unit($base) == '%' {
+  @if unit($base) == "%" {
     $base: ($base / 100%) * 16px;
   }
 
   // Using rem as base allows correct scaling
-  @if unit($base) == 'rem' {
+  @if unit($base) == "rem" {
     $base: strip-unit($base) * 16px;
   }
 
@@ -57,7 +61,7 @@ $global-font-size: 100% !default;
 // Converts a unitless, pixel, or rem value to em, for use in breakpoints.
 @function -zf-bp-to-em($value) {
   // Pixel and unitless values are converted to rems
-  @if unit($value) == 'px' or unitless($value) {
+  @if unit($value) == "px" or unitless($value) {
     $value: rem-calc($value, $base: 16px);
   }
 
@@ -74,18 +78,18 @@ $global-font-size: 100% !default;
 /// @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
 @function -zf-to-rem($value, $base: null) {
   // Check if the value is a number
-  @if type-of($value) != 'number' {
+  @if type-of($value) != "number" {
     @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
     @return $value;
   }
 
   // Transform em into rem if someone hands over 'em's
-  @if unit($value) == 'em' {
+  @if unit($value) == "em" {
     $value: strip-unit($value) * 1rem;
   }
 
   // Calculate rem if units for $value is not rem or em
-  @if unit($value) != 'rem' {
+  @if unit($value) != "rem" {
     $value: strip-unit($value) / strip-unit($base) * 1rem;
   }
 
@@ -104,7 +108,6 @@ $global-font-size: 100% !default;
 ///
 /// @return {Number} - Unitless number
 @function unitless-calc($value, $base: null) {
-
   // If no base is defined, defer to the global font size
   @if $base == null {
     $base: $global-font-size;
@@ -113,33 +116,33 @@ $global-font-size: 100% !default;
   // First, lets convert our $base to pixels
 
   // If the base font size is a %, then multiply it by 16px
-  @if unit($base) == '%' {
+  @if unit($base) == "%" {
     $base: ($base / 100%) * 16px;
   }
 
-  @if unit($base) == 'rem' {
+  @if unit($base) == "rem" {
     $base: strip-unit($base) * 16px;
   }
 
-  @if unit($base) == 'em' {
+  @if unit($base) == "em" {
     $base: strip-unit($base) * 16px;
   }
 
   // Now let's convert our value to pixels too
-  @if unit($value) == '%' {
+  @if unit($value) == "%" {
     $value: ($value / 100%) * $base;
   }
 
-  @if unit($value) == 'rem' {
+  @if unit($value) == "rem" {
     $value: strip-unit($value) * $base;
   }
 
-  @if unit($value) == 'em' {
+  @if unit($value) == "em" {
     $value: strip-unit($value) * $base;
   }
 
   // 'px'
-  @if unit($value) == 'px' {
+  @if unit($value) == "px" {
     @return strip-unit($value) / strip-unit($base);
   }
 
@@ -157,10 +160,10 @@ $global-font-size: 100% !default;
 /// @param {Map} $map - Map to pull a value from.
 ///
 /// @returns {List} Depending on the flag, returns either $keys or $values or both.
-@function map-to-list($map, $keep: 'both') {
-  $keep: if(index('keys' 'values', $keep), $keep, 'both');
+@function map-to-list($map, $keep: "both") {
+  $keep: if(index("keys" "values", $keep), $keep, "both");
 
-  @if type-of($map) == 'map' {
+  @if type-of($map) == "map" {
     $keys: ();
     $values: ();
 
@@ -169,21 +172,17 @@ $global-font-size: 100% !default;
       $values: append($values, $val);
     }
 
-    @if $keep == 'keys' {
+    @if $keep == "keys" {
       @return $keys;
-    }
-    @else if $keep == 'values' {
+    } @else if $keep == "values" {
       @return $values;
-    }
-    @else {
+    } @else {
       @return zip($keys, $values);
     }
   }
 
-  @return if(type-of($map) != 'list', ($value,), $map);
-
+  @return if(type-of($map) != "list", ($value), $map);
 }
-
 
 // Foundation for Sites by ZURB
 // foundation.zurb.com
@@ -200,7 +199,7 @@ $breakpoints: (
   medium: 640px,
   large: 1024px,
   xlarge: 1200px,
-  xxlarge: 1440px,
+  xxlarge: 1440px
 ) !default;
 
 /// The largest named breakpoint in which to include print as a media type
@@ -209,12 +208,11 @@ $print-breakpoint: large !default;
 
 $-zf-zero-breakpoint: small !default;
 
-$-zf-breakpoints-keys: map-to-list($breakpoints, 'keys');
+$-zf-breakpoints-keys: map-to-list($breakpoints, "keys");
 
 @if nth(map-values($breakpoints), 1) != 0 {
   @error 'The first key in the $breakpoints map must have a value of "0".';
-}
-@else {
+} @else {
   $-zf-zero-breakpoint: nth(map-keys($breakpoints), 1);
 }
 
@@ -233,29 +231,27 @@ $breakpoint-classes: (small medium large) !default;
   // Direction of media query (up, down, or only)
   $dir: if(length($val) > 1, nth($val, 2), up);
   // Eventual output
-  $str: '';
+  $str: "";
   // Is it a named media query?
   $named: false;
 
   // Orientation media queries have a unique syntax
-  @if $bp == 'landscape' or $bp == 'portrait' {
-    @return '(orientation: #{$bp})';
-  }
-  @else if $bp == 'retina' {
-    @return '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+  @if $bp == "landscape" or $bp == "portrait" {
+    @return "(orientation: #{$bp})";
+  } @else if $bp == "retina" {
+    @return "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
   }
 
   // Try to pull a named breakpoint out of the $breakpoints map
-  @if type-of($bp) == 'string' {
+  @if type-of($bp) == "string" {
     @if map-has-key($breakpoints, $bp) {
-      @if $dir == 'only' or $dir == 'down' {
+      @if $dir == "only" or $dir == "down" {
         $bp-max: -zf-map-next($breakpoints, $bp);
       }
 
       $bp: map-get($breakpoints, $bp);
       $named: true;
-    }
-    @else {
+    } @else {
       $bp: 0;
       @warn 'breakpoint(): "#{$val}" is not defined in your $breakpoints setting.';
     }
@@ -267,53 +263,52 @@ $breakpoint-classes: (small medium large) !default;
   // Use a precision under 1px to support browser zoom, but not to low to avoid rounding.
   // See https://github.com/zurb/foundation-sites/issues/11313
   @if $bp-max {
-    $bp-max: -zf-bp-to-em($bp-max) - .00125;
+    $bp-max: -zf-bp-to-em($bp-max) - 0.00125;
   }
 
   // Conditions to skip media query creation
   // - It's a named breakpoint that resolved to "0 down" or "0 up"
   // - It's a numeric breakpoint that resolved to "0 " + anything
-  @if $bp > 0em or $dir == 'only' or $dir == 'down' {
+  @if $bp > 0em or $dir == "only" or $dir == "down" {
     // `only` ranges use the format `(min-width: n) and (max-width: n)`
-    @if $dir == 'only' {
+    @if $dir == "only" {
       // Only named media queries can have an "only" range
       @if $named == true {
         // Only use "min-width" if the floor is greater than 0
         @if $bp > 0em {
-          $str: $str + '(min-width: #{$bp})';
+          $str: $str + "(min-width: #{$bp})";
 
           // Only add "and" to the media query if there's a ceiling
           @if $bp-max != null {
-            $str: $str + ' and ';
+            $str: $str + " and ";
           }
         }
 
         // Only use "max-width" if there's a ceiling
         @if $bp-max != null {
-          $str: $str + '(max-width: #{$bp-max})';
+          $str: $str + "(max-width: #{$bp-max})";
         }
-      }
-      @else {
+      } @else {
         @warn 'breakpoint(): Only named media queries can have an `only` range.';
       }
     }
 
-      // `down` ranges use the format `(max-width: n)`
-    @else if $dir == 'down' {
+    // `down` ranges use the format `(max-width: n)`
+    @else if $dir == "down" {
       $max: if($named, $bp-max, $bp);
 
       // Skip media query creation if input value is exactly "0 down",
       // unless the function was called as "small down", in which case it's just "small only"
       @if $named or $bp > 0em {
         @if $max != null {
-          $str: $str + '(max-width: #{$max})';
+          $str: $str + "(max-width: #{$max})";
         }
       }
     }
 
-      // `up` ranges use the format `(min-width: n)`
+    // `up` ranges use the format `(min-width: n)`
     @else if $bp > 0em {
-      $str: $str + '(min-width: #{$bp})';
+      $str: $str + "(min-width: #{$bp})";
     }
   }
 

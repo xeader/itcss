@@ -17,17 +17,25 @@
  * @license All right reserved
  */
 
-.grid{
+.grid {
   @include grid;
 }
 
-.main{
-  flex-grow: 1;
-}
+$columns-count: 1;
 
 @each $size in $breakpoint-classes {
+  @if type-of($grid-column-count) == 'number' {
+    $columns-count: $grid-column-count;
+  } @else if (contains(map_keys($grid-column-count), $size)) {
+    $columns-count: map_get($grid-column-count, $size);
+  }
+
   @include breakpoint($size up) {
-    @for $i from 1 through $grid-column-count {
+    .#{$size}-full {
+      grid-column-start: 1;
+      grid-column-end: -1;
+    }
+    @for $i from 1 through $columns-count {
       .#{$size}-#{$i} {
         @include grid-column($i);
       }

@@ -26,9 +26,17 @@
   @include grid-container;
   display: grid;
   flex: 0 1 auto;
-  grid-template-columns: repeat($grid-column-count, minmax(0, 1fr));
 
-  // gutter
+  @if type-of($grid-column-count) == "number" {
+    grid-template-columns: repeat($grid-column-count, minmax(0, 1fr));
+  } @else if type-of($grid-column-count) == "map" {
+    @each $size, $column-count in $grid-column-count {
+      @include breakpoint($size up) {
+        grid-template-columns: repeat($column-count, minmax(0, 1fr));
+      }
+    }
+  }
+
   @each $size, $gutter in $grid-column-gutter {
     @include breakpoint($size up) {
       grid-gap: $gutter;
@@ -36,6 +44,6 @@
   }
 }
 
-@mixin grid-column($span: $grid-column-count) {
+@mixin grid-column($span: 1) {
   grid-column-end: span $span;
 }
