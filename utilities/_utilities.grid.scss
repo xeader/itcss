@@ -17,6 +17,10 @@
  * @license All right reserved
  */
 
+.container{
+  @include grid-container;
+}
+
 .grid {
   @include grid;
 }

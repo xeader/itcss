@@ -23,7 +23,8 @@
 }
 
 @mixin grid() {
-  @include grid-container;
+  width: 100%;
+  max-width: $global-width;
   display: grid;
   flex: 0 1 auto;
 
