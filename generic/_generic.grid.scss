@@ -23,17 +23,12 @@ $gutter: 0;
       }
 
       .#{$size}-#{$grid-name}-#{$i} {
-        display: grid;
-        grid-template-columns: repeat($i, minmax(0, 1fr));
-        grid-column-end: span $i;
-
         @if map_has_key($grid-column-gutter, $size) {
           $gutter: map_get($grid-column-gutter, $size);
         }
-        grid-gap: $gutter;
         --grid-gutter: #{$gutter};
+        @include subgrid($i);
 
-        &,
         &.#{$grid-name} {
           --grid-columns: #{$i};
         }

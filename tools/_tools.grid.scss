@@ -96,3 +96,15 @@
     #{percentage($number / $total)} + var(--grid-gutter) / #{$total * $number}
   );
 }
+
+@mixin subgrid($columns, $start: null) {
+  display: grid;
+  grid-template-columns: repeat($columns, minmax(0, 1fr));
+  grid-gap: var(--grid-gutter);
+  @if $start == null {
+    grid-column-end: span $columns;
+  } @else {
+    grid-column: $start / span $columns;
+  }
+  --grid-columns: #{$columns};
+}
