@@ -21,6 +21,9 @@
 $global-width: rem-calc(1200) !default;
 $max-full-width: rem-calc(1440) !default;
 
+$grid-name: "grid" !default;
+$grid-container-name: "grid-container" !default;
+
 /// The maximum width of a row.
 /// @type Number
 $grid-row-width: $global-width !default;
@@ -33,5 +36,5 @@ $grid-column-count: 12 !default;
 /// @type Map | Length
 $grid-column-gutter: (
   small: rem-calc(20),
-  medium: rem-calc(30),
+  medium: rem-calc(30)
 ) !default;

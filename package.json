@@ -1,6 +1,6 @@
 {
   "name": "@xeader/itcss",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "description": "Xeader ITCSS SCSS scaffolding and utilities",
   "homepage": "https://github.com/xeader/itcss",
   "scripts": {

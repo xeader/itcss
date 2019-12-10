@@ -37,6 +37,7 @@
 @import "generic/generic.normalize";
 @import "generic/generic.reset";
 @import "generic/generic.shared";
+@import "generic/generic.grid";
 
 // ELEMENTS
 @import "elements/elements.forms";
@@ -50,4 +51,3 @@
 // UTILITIES
 @import "utilities/utilities.clearfix";
 @import "utilities/utilities.no-list";
-@import "utilities/utilities.grid";
