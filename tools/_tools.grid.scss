@@ -17,6 +17,25 @@
  * @license All right reserved
  */
 
+@function breakpoints_value($map, $breakpoint) {
+  @if type_of($map) != 'map' {
+    @return $map;
+  }
+
+  $value: null;
+  @each $size, $breakpointSize in $breakpoint-classes {
+    @if map_has_key($map, $size) {
+      $value: map_get($map, $size);
+    }
+
+    @if $size == $breakpoint {
+      @return $value;
+    }
+  }
+
+  @return $value;
+}
+
 @mixin grid-container {
   @include full-width-max;
   grid-column: 1 / -1;
@@ -46,7 +65,9 @@
 
   @include breakpoint($global-width up) {
     width: -moz-available; // WebKit-based browsers will ignore this.
+    //noinspection CssInvalidPropertyValue
     width: -webkit-fill-available; // Mozilla-based browsers will ignore this.
+    //noinspection CssInvalidPropertyValue
     width: fill-available;
   }
 
@@ -91,10 +112,9 @@
 }
 
 // get dimension of column per total
-@function columns($number, $total) {
-  @return calc(
-    #{percentage($number / $total)} + var(--grid-gutter) / #{$total * $number}
-  );
+@function columns($number, $total, $size: small) {
+  $max-columns: breakpoints_value($grid-column-count, $size);
+  @return calc(#{percentage($max-columns / $total)} / #{$max-columns} * #{$number} + (var(--grid-gutter) / (#{$max-columns} - #{$total}) * #{$number}));
 }
 
 @mixin subgrid($columns, $start: null) {
