@@ -112,9 +112,16 @@
 }
 
 // get dimension of column per total
-@function columns($number, $total, $size: small) {
+@function columns($number, $total: null, $size: small) {
   $max-columns: breakpoints_value($grid-column-count, $size);
-  @return calc(#{percentage($max-columns / $total)} / #{$max-columns} * #{$number} + (var(--grid-gutter) / (#{$max-columns} - #{$total}) * #{$number}));
+  $percentage: null;
+  @if($total == null){
+    $percentage: unquote("100 / var(--grid-columns) * " + $number);
+  }@else{
+    $percentage: percentage($max-columns / $total) / $max-columns * $number;
+  }
+
+  @return calc(#{$percentage} + (var(--grid-gutter) / (#{$max-columns} - #{$total}) * #{$number}));
 }
 
 @mixin subgrid($columns, $start: null) {
