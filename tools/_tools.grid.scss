@@ -84,7 +84,7 @@
 
   @each $size, $gutter in $grid-column-gutter {
     @include breakpoint($size up) {
-      grid-gap: $gutter;
+      grid-column-gap: $gutter;
       --grid-gutter: #{$gutter};
     }
   }
@@ -116,7 +116,8 @@
   $max-columns: breakpoints_value($grid-column-count, $size);
   $percentage: null;
   @if($total == null){
-    $percentage: unquote("100 / var(--grid-columns) * " + $number);
+    $percentage: unquote("100% / var(--grid-columns) * " + $number);
+    $total: unquote("var(--grid-columns)");
   }@else{
     $percentage: percentage($max-columns / $total) / $max-columns * $number;
   }
@@ -127,7 +128,7 @@
 @mixin subgrid($columns, $start: null) {
   display: grid;
   grid-template-columns: repeat($columns, minmax(0, 1fr));
-  grid-gap: var(--grid-gutter);
+  grid-column-gap: var(--grid-gutter);
   @if $start == null {
     grid-column-end: span $columns;
   } @else {
