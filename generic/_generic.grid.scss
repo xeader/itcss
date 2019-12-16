@@ -9,6 +9,8 @@ $gutter: 0;
   }
 
   @include breakpoint($size up) {
+    --grid-columns: #{$columns-count};
+
     .#{$size}-full {
       grid-column-start: 1;
       grid-column-end: -1;
