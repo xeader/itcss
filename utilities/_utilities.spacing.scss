@@ -1,0 +1,102 @@
+/*!
+ * Xeader Studios
+ *
+ * NOTICE OF LICENCE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt
+ * It is also available through th world-wide-web at this URL:
+ * https://xeader.com/LICENCE-CE.txt
+ *
+ * @category bluelabs.cbm
+ * @package bluelabs.cbm
+ *
+ * @author Antonio Gatta <a.gatta@xeader.com>
+ * @url http://xeader.com
+ * @copyright Copyright (c) 2019 Xeader Studios
+ * @license All right reserved
+ */
+
+$spacing-properties: ();
+$spacing-mulitpliers: (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64) !default;
+$padding-utilities: true !default;
+$padding-map: (p: padding) !default;
+$margin-utilities: true !default;
+$margin-map: (m: margin) !default;
+
+@if $padding-utilities == true {
+  $spacing-properties: map_merge($spacing-properties, $padding-map);
+}
+
+@if $margin-utilities == true {
+  $spacing-properties: map_merge($spacing-properties, $margin-map);
+}
+
+@debug $spacing-properties;
+
+@mixin spacing($property, $multiplier) {
+  #{$property}: rem-calc($multiplier * $base-font-size / 4)
+}
+
+@each $prefix, $property in $spacing-properties {
+  @debug $prefix;
+  @debug $property;
+  @each $size in $breakpoint-classes {
+    $size-prefix: '';
+    @if $size != $-zf-zero-breakpoint {
+      $size-prefix: $size + '-';
+    }
+
+
+    @for $i from 0 through 120 {
+      @if index($spacing-mulitpliers, $i) != null{
+        .#{$size-prefix}#{$prefix}-#{$i} {
+          @include spacing(#{$property}, $i);
+        }
+        .#{$size-prefix}#{$prefix}y-#{$i} {
+          @include spacing(#{$property}-top, $i);
+          @include spacing(#{$property}-bottom, $i);
+        }
+        .#{$size-prefix}#{$prefix}x-#{$i} {
+          @include spacing(#{$property}-left, $i);
+          @include spacing(#{$property}-right, $i);
+        }
+        .#{$size-prefix}#{$prefix}t-#{$i} {
+          @include spacing(#{$property}-top, $i);
+        }
+        .#{$size-prefix}#{$prefix}r-#{$i} {
+          @include spacing(#{$property}-right, $i);
+        }
+        .#{$size-prefix}#{$prefix}b-#{$i} {
+          @include spacing(#{$property}-bottom, $i);
+        }
+        .#{$size-prefix}#{$prefix}l-#{$i} {
+          @include spacing(#{$property}-left, $i);
+        }
+      }
+    }
+    .#{$size-prefix}#{$prefix}-px {
+      #{$property}: 1px;
+    }
+    .#{$size-prefix}#{$prefix}y-px {
+      #{$property}-top: 1px;
+      #{$property}-bottom: 1px;
+    }
+    .#{$size-prefix}#{$prefix}x-px {
+      #{$property}-left: 1px;
+      #{$property}-right: 1px;
+    }
+    .#{$size-prefix}#{$prefix}t-px {
+      #{$property}-top: 1px;
+    }
+    .#{$size-prefix}#{$prefix}r-px {
+      #{$property}-right: 1px;
+    }
+    .#{$size-prefix}#{$prefix}b-px {
+      #{$property}-bottom: 1px;
+    }
+    .#{$size-prefix}#{$prefix}l-px {
+      #{$property}-left: 1px;
+    }
+  }
+}
