@@ -47,56 +47,57 @@ $margin-map: (m: margin) !default;
       $size-prefix: $size + '-';
     }
 
-
-    @for $i from 0 through 120 {
-      @if index($spacing-mulitpliers, $i) != null{
-        .#{$size-prefix}#{$prefix}-#{$i} {
-          @include spacing(#{$property}, $i);
-        }
-        .#{$size-prefix}#{$prefix}y-#{$i} {
-          @include spacing(#{$property}-top, $i);
-          @include spacing(#{$property}-bottom, $i);
-        }
-        .#{$size-prefix}#{$prefix}x-#{$i} {
-          @include spacing(#{$property}-left, $i);
-          @include spacing(#{$property}-right, $i);
-        }
-        .#{$size-prefix}#{$prefix}t-#{$i} {
-          @include spacing(#{$property}-top, $i);
-        }
-        .#{$size-prefix}#{$prefix}r-#{$i} {
-          @include spacing(#{$property}-right, $i);
-        }
-        .#{$size-prefix}#{$prefix}b-#{$i} {
-          @include spacing(#{$property}-bottom, $i);
-        }
-        .#{$size-prefix}#{$prefix}l-#{$i} {
-          @include spacing(#{$property}-left, $i);
+    @include breakpoint($size up) {
+      @for $i from 0 through 120 {
+        @if index($spacing-mulitpliers, $i) != null {
+          .#{$size-prefix}#{$prefix}-#{$i} {
+            @include spacing(#{$property}, $i);
+          }
+          .#{$size-prefix}#{$prefix}y-#{$i} {
+            @include spacing(#{$property}-top, $i);
+            @include spacing(#{$property}-bottom, $i);
+          }
+          .#{$size-prefix}#{$prefix}x-#{$i} {
+            @include spacing(#{$property}-left, $i);
+            @include spacing(#{$property}-right, $i);
+          }
+          .#{$size-prefix}#{$prefix}t-#{$i} {
+            @include spacing(#{$property}-top, $i);
+          }
+          .#{$size-prefix}#{$prefix}r-#{$i} {
+            @include spacing(#{$property}-right, $i);
+          }
+          .#{$size-prefix}#{$prefix}b-#{$i} {
+            @include spacing(#{$property}-bottom, $i);
+          }
+          .#{$size-prefix}#{$prefix}l-#{$i} {
+            @include spacing(#{$property}-left, $i);
+          }
         }
       }
-    }
-    .#{$size-prefix}#{$prefix}-px {
-      #{$property}: 1px;
-    }
-    .#{$size-prefix}#{$prefix}y-px {
-      #{$property}-top: 1px;
-      #{$property}-bottom: 1px;
-    }
-    .#{$size-prefix}#{$prefix}x-px {
-      #{$property}-left: 1px;
-      #{$property}-right: 1px;
-    }
-    .#{$size-prefix}#{$prefix}t-px {
-      #{$property}-top: 1px;
-    }
-    .#{$size-prefix}#{$prefix}r-px {
-      #{$property}-right: 1px;
-    }
-    .#{$size-prefix}#{$prefix}b-px {
-      #{$property}-bottom: 1px;
-    }
-    .#{$size-prefix}#{$prefix}l-px {
-      #{$property}-left: 1px;
+      .#{$size-prefix}#{$prefix}-px {
+        #{$property}: 1px;
+      }
+      .#{$size-prefix}#{$prefix}y-px {
+        #{$property}-top: 1px;
+        #{$property}-bottom: 1px;
+      }
+      .#{$size-prefix}#{$prefix}x-px {
+        #{$property}-left: 1px;
+        #{$property}-right: 1px;
+      }
+      .#{$size-prefix}#{$prefix}t-px {
+        #{$property}-top: 1px;
+      }
+      .#{$size-prefix}#{$prefix}r-px {
+        #{$property}-right: 1px;
+      }
+      .#{$size-prefix}#{$prefix}b-px {
+        #{$property}-bottom: 1px;
+      }
+      .#{$size-prefix}#{$prefix}l-px {
+        #{$property}-left: 1px;
+      }
     }
   }
 }
