@@ -48,6 +48,9 @@ $margin-map: (m: margin) !default;
     }
 
     @include breakpoint($size up) {
+      .#{$size-prefix}#{$prefix}-no {
+        #{$property}: unset;
+      }
       @for $i from 0 through 120 {
         @if index($spacing-mulitpliers, $i) != null {
           .#{$size-prefix}#{$prefix}-#{$i} {
@@ -74,9 +77,6 @@ $margin-map: (m: margin) !default;
             @include spacing(#{$property}-left, $i);
           }
         }
-      }
-      .#{$size-prefix}#{$prefix}-no {
-        #{$property}: unset;
       }
       .#{$size-prefix}#{$prefix}-px {
         #{$property}: 1px;
