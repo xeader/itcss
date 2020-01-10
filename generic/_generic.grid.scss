@@ -11,6 +11,7 @@ $gutter: 0;
   @include breakpoint($size up) {
     :root {
       --grid-columns: #{$columns-count};
+      --column-columns: #{$columns-count};
     }
 
     .#{$size}-full {

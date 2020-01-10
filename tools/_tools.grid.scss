@@ -92,6 +92,7 @@
 
 @mixin grid-column($span: 1) {
   grid-column-end: span $span;
+  --column-columns: #{$span};
 }
 
 @mixin grid-wrapper($trimLeft: true, $trimRight: true) {
