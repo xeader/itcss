@@ -65,11 +65,7 @@
   flex: 0 1 auto;
 
   @include breakpoint($global-width up) {
-    width: -moz-available; // WebKit-based browsers will ignore this.
-    //noinspection CssInvalidPropertyValue
-    width: -webkit-fill-available; // Mozilla-based browsers will ignore this.
-    //noinspection CssInvalidPropertyValue
-    width: fill-available;
+    width: stretch;
   }
 
   @if type-of($grid-column-count) == "number" {
