@@ -32,15 +32,12 @@ $margin-map: (m: margin) !default;
   $spacing-properties: map_merge($spacing-properties, $margin-map);
 }
 
-@debug $spacing-properties;
 
 @mixin spacing($property, $multiplier) {
   #{$property}: rem-calc($multiplier * $base-font-size / 4)
 }
 
 @each $prefix, $property in $spacing-properties {
-  @debug $prefix;
-  @debug $property;
   @each $size in $breakpoint-classes {
     $size-prefix: '';
     @if $size != $-zf-zero-breakpoint {
