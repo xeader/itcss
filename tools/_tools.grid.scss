@@ -46,10 +46,10 @@
   justify-items: center;
 
   .#{$grid-name} {
-    margin-left: calc(-1 * var(--grid-gutter));
-    margin-right: calc(-1 * var(--grid-gutter));
-    padding-left: var(--grid-gutter);
-    padding-right: var(--grid-gutter);
+    margin-left: calc(-1 * var(--grid-outer));
+    margin-right: calc(-1 * var(--grid-outer));
+    padding-left: var(--grid-outer);
+    padding-right: var(--grid-outer);
   }
 
   @include breakpoint(large up) {
@@ -85,6 +85,11 @@
       --grid-gutter: #{$gutter};
     }
   }
+  @each $size, $outer in $grid-outer-margin {
+    @include breakpoint($size up) {
+      --grid-outer: #{$outer};
+    }
+  }
 }
 
 @mixin grid-column($span: 1) {
@@ -99,13 +104,13 @@
   grid-column-gap: var(--grid-gutter);
 
   @if ($trimLeft) {
-    margin-right: calc(-1 * var(--grid-gutter));
-    padding-right: var(--grid-gutter);
+    margin-right: calc(-1 * var(--grid-outer));
+    padding-right: var(--grid-outer);
   }
 
   @if ($trimRight) {
-    margin-left: calc(-1 * var(--grid-gutter));
-    padding-left: var(--grid-gutter);
+    margin-left: calc(-1 * var(--grid-outer));
+    padding-left: var(--grid-outer);
   }
 }
 

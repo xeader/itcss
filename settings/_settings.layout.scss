@@ -38,3 +38,7 @@ $grid-column-gutter: (
   small: rem-calc(20),
   medium: rem-calc(30)
 ) !default;
+$grid-outer-margin: (
+        small: rem-calc(20),
+        medium: rem-calc(30)
+) !default;
