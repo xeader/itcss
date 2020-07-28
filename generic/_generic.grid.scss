@@ -1,5 +1,6 @@
 $columns-count: 1;
 $gutter: 0;
+$full-start: true !default;
 
 @each $size in $breakpoint-classes {
   @if type-of($grid-column-count) == "number" {
@@ -15,7 +16,9 @@ $gutter: 0;
     }
 
     .#{$size}-full {
-      grid-column-start: 1;
+      @if($full-start == true){
+        grid-column-start: 1;
+      }
       grid-column-end: -1;
     }
     @for $i from 1 through $columns-count {
