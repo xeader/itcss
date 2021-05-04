@@ -18,6 +18,7 @@
 $columns-count: 1;
 $gutter: 0;
 $full-start: true !default;
+$create-grid-columns-classes: true !default;
 
 @each $size in $breakpoint-classes {
   @if type-of($grid-column-count) == "number" {
@@ -31,24 +32,24 @@ $full-start: true !default;
       --grid-columns: #{$columns-count};
       --column-columns: #{$columns-count};
     }
-
-    .#{$size}-full {
-      @if($full-start == true){
-        grid-column-start: 1;
+    @if ($create-grid-columns-classes == true) {
+      .#{$size}-full {
+        @if ($full-start == true) {
+          grid-column-start: 1;
+        }
+        grid-column-end: -1;
       }
-      grid-column-end: -1;
-    }
-    @for $i from 1 through $columns-count {
-      .#{$size}-x-#{$i} {
-        grid-column-start: $i;
-      }
+      @for $i from 1 through $columns-count {
+        .#{$size}-x-#{$i} {
+          grid-column-start: $i;
+        }
 
-      .#{$size}-#{$i} {
-        @include grid-column($i);
-      }
+        .#{$size}-#{$i} {
+          @include grid-column($i);
+        }
 
-      .#{$size}-#{$grid-name}-#{$i} {
-        @if map_has_key($grid-column-gutter, $size) {
+        .#{$size}-#{$grid-name}-#{$i} {
+          @if map_has_key($grid-column-gutter, $size) {
           $gutter: map_get($grid-column-gutter, $size);
         }
         --grid-gutter: #{$gutter};
@@ -58,6 +59,7 @@ $full-start: true !default;
           --grid-columns: #{$i};
         }
       }
+    }
     }
   }
 }

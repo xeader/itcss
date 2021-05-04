@@ -15,9 +15,9 @@
 // @copyright Copyright (c) 2019 Xeader Studios
 // @license All right reserved
 
-/**
- * MIXINS
- */
+//
+//  MIXINS
+//
 
 // Simple truncation mixin to cut off text using an ellipsis after a certain
 // width.
@@ -43,9 +43,9 @@
   text-overflow: ellipsis $important;
 }
 
-/**
- * Full Width
- */
+//
+// Full Width
+//
 $max-full-width: 1600px !default;
 
 @mixin full-width-max {
@@ -54,9 +54,9 @@ $max-full-width: 1600px !default;
   max-width: rem-calc($max-full-width);
 }
 
-/**
-  First-Last no margin
- */
+//
+// First-Last no margin
+//
 @mixin flnm() {
   > *:first-child {
     margin-top: auto;
@@ -95,34 +95,34 @@ $max-full-width: 1600px !default;
 
   span:last-child {
     // The right side can grow, but NOT SHRINK.
-    flex: 1 0 auto ;
-    overflow: hidden ;
-    white-space: pre ;
+    flex: 1 0 auto;
+    overflow: hidden;
+    white-space: pre;
   }
 }
 
-/**
- * Make an block scrollable
- */
+//
+// Make an block scrollable
+//
 @mixin scrollable($direction: vertical) {
   @if ($direction == vertical) {
-    /* Make this scrollable when needed */
+    // Make this scrollable when needed
     overflow-x: hidden;
-    /* We don't want vertical scrolling */
+    // We don't want vertical scrolling
     overflow-y: auto;
   } @else {
-    /* Make this scrollable when needed */
+    // Make this scrollable when needed
     overflow-x: auto;
-    /* We don't want vertical scrolling */
+    // We don't want vertical scrolling
     overflow-y: hidden;
   }
-  /* For WebKit implementations, provide inertia scrolling */
+  // For WebKit implementations, provide inertia scrolling
   -webkit-overflow-scrolling: touch;
 
-  /* Make an auto-hiding scroller for the 3 people using a IE */
+  // Make an auto-hiding scroller for the 3 people using a IE
   -ms-overflow-style: -ms-autohiding-scrollbar;
   scrollbar-width: none;
-  /* Remove the default scrollbar for WebKit implementations */
+  // Remove the default scrollbar for WebKit implementations
   &::-webkit-scrollbar {
     display: none;
   }

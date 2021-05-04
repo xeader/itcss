@@ -15,12 +15,12 @@
 // @copyright Copyright (c) 2019 Xeader Studios
 // @license All right reserved
 
-/**
- * Set the global `box-sizing` state to `border-box`.
- *
- * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
- * paulirish.com/2012/box-sizing-border-box-ftw
- */
+//
+//  Set the global `box-sizing` state to `border-box`.
+//
+//  css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+//  paulirish.com/2012/box-sizing-border-box-ftw
+//
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
